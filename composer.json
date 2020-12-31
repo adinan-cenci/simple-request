@@ -1,0 +1,29 @@
+{
+    "name": "adinan-cenci/simple-request",
+    "description": "A library for simple http request with curl.", 
+    "type": "library", 
+    "keywords": ["http", "curl"], 
+    "license": "MIT",
+    "version": "1.0.0", 
+    "authors": [
+        {
+            "name": "Adinan Cenci",
+            "email": "adinancenci@protonmail.com", 
+            "role": "developer"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/adinan-cenci/simple-request"
+        }
+    ],
+    "require": {
+        "php": ">=7.0" 
+    }, 
+    "autoload": {
+        "psr-4": {
+            "AdinanCenci\\SimpleRequest\\": "src/"
+        }
+    }
+}
