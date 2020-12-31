@@ -70,7 +70,7 @@ class Request
 
         //--------------
 
-        return new Response($httpCode, $header, $body);
+        return new Response($options[CURLOPT_URL], $httpCode, $header, $body);
     }
 
     protected function getCurlOptions() 
