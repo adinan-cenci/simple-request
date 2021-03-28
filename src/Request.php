@@ -57,20 +57,22 @@ class Request
     
     public function request() 
     {
-        $options    = $this->getCurlOptions();
-        $ch         = curl_init();
+        $options      = $this->getCurlOptions();
+        $ch           = curl_init();
         curl_setopt_array($ch, $options);
-        $response   = curl_exec($ch);
-        $httpCode   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-        $header     = substr($response, 0, $headerSize);
-        $body       = substr($response, $headerSize);
+        $response     = curl_exec($ch);
+        $httpCode     = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $headerSize   = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+        $header       = substr($response, 0, $headerSize);
+        $body         = substr($response, $headerSize);
+        $errorCode    = curl_errno($ch);
+        $errorMessage = curl_error($ch);
 
         curl_close($ch);
 
         //--------------
 
-        return new Response($options[CURLOPT_URL], $httpCode, $header, $body);
+        return new Response($options[CURLOPT_URL], $httpCode, $header, $body, $errorCode, $errorMessage);
     }
 
     protected function getCurlOptions() 
